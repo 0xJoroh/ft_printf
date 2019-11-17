@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dec_to_hex.c                                    :+:      :+:    :+:   */
+/*   ft_putadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/16 18:21:58 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/17 16:06:30 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/11/17 14:05:13 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/17 15:06:01 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_dec_to_hex(unsigned int nbr)
+static char		*tohex(unsigned long long nbr)
 {
-	unsigned int	rem;
+	int				rem;
 	char			tab[100];
 	int				i;
 
@@ -27,4 +27,11 @@ char	*ft_dec_to_hex(unsigned int nbr)
 	}
 	tab[i] = '\0';
 	return (ft_strrev(tab));
+}
+
+int		ft_putadd(void *add)
+{
+	ft_putstr("0x");
+	ft_putlower(tohex((unsigned long long)add));
+	return (ft_strlen(tohex((unsigned long long)add) + 2));
 }

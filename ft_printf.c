@@ -6,24 +6,11 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 19:51:58 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/17 12:19:28 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/17 16:02:06 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-// char	*ft_typeof(char format)
-// {
-// 	if (format == 's')
-// 		return ("char *");
-// 	if (format == 'c')
-// 		return ("char");
-// 	if (format == 'd' || format == 'i')
-// 		return ("int");
-// 	if (format == 'u')
-// 		return ("unsigned int");
-// 	return ("void");
-// }
 
 int		ft_printf(const char *format, ...)
 {
@@ -55,12 +42,14 @@ int		ft_printf(const char *format, ...)
 			}
 			else if (*format == 'x' || *format == 'X')
 			{
-				if (*format == 'x')
-					ft_putstr(str = ft_strlower(ft_dec_to_hex(va_arg(list, int))));
-				else
+				// if (*format == 'x')
+				// 	ft_putstr(str = ft_dec_to_hex(va_arg(list, int)));
+				// else
 					ft_putstr(str = ft_dec_to_hex(va_arg(list, int)));
 				counter += ft_strlen(str) - 1;
 			}
+			else if (*format == 'p')
+				counter += ft_putadd(va_arg(list, int *)) - 1;
 			else
 				ft_putchar(*format);
 		else
