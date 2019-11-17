@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 18:03:44 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/17 16:30:16 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/17 16:32:13 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,5 @@ int		main(void)
 	ptr = &x;
 	printf("\t\t\t[%d]\n", ft_printf("[%s - %c - %d - %i - %x - %X - %p]", "hello", 'c', 12, 96, -566699, 56663899, &x));
 	printf("\t\t\t[%d]", printf("[%s - %c - %d - %i - %x - %X - %p]", "hello", 'c', 12, 96, -566699, 56663899, &x));
-	
-	// printf("\t\t\t[%d]\n", ft_printf("%p", &x));
-	// printf("\t\t\t[%d]", printf("%p", &x));
 	return (0);
 }
