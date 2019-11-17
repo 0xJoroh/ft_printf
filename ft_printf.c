@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 19:51:58 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/17 16:25:30 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/17 16:30:05 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		ft_printf(const char *format, ...)
 				counter += ft_strlen(str) - 1;
 			}
 			else if (*format == 'p')
-				counter += ft_putadd(va_arg(list, int *)) + 1;
+				counter += ft_putadd(va_arg(list, int *)) - 1;
 			else
 				ft_putchar(*format);
 		else
