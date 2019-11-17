@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 14:05:13 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/17 15:06:01 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/17 16:25:12 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int		ft_putadd(void *add)
 {
 	ft_putstr("0x");
 	ft_putlower(tohex((unsigned long long)add));
-	return (ft_strlen(tohex((unsigned long long)add) + 2));
+	return (ft_strlen(tohex((unsigned long long)add)));
 }
