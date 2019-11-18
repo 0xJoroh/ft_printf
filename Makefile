@@ -6,13 +6,13 @@
 #    By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/13 18:00:53 by mait-si-          #+#    #+#              #
-#    Updated: 2019/11/16 15:56:04 by mait-si-         ###   ########.fr        #
+#    Updated: 2019/11/18 12:18:01 by mait-si-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=		libftprintf.a
 
-SRCS		=		*.c
+SRCS		=		*.c src/*.c
 
 OBJS		=		$(SRCS:.c=.o)
 

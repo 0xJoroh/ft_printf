@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putlower.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 18:03:44 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/18 20:15:18 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/11/17 13:51:54 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/18 18:31:36 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int		main(void)
+int	ft_putlower(char *str)
 {
-    printf("\t[%d]\n", ft_printf("a%sa", NULL));
-    printf("\t[%d]\n",    printf("a%sa", NULL));
-	return (0);
+	int len;
+
+	len = 0;
+	if (str)
+		while (*str != '\0')
+			len += ft_putchar(ft_tolower(*str++));
+	else
+	{
+		write(1, "(NULL)", 6);
+		len = 6;
+	}
+	return (len);
 }

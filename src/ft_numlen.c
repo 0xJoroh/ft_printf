@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 18:03:44 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/18 20:15:18 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/11/16 15:49:23 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/18 13:52:13 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int		main(void)
+size_t	ft_numlen(size_t nbr)
 {
-    printf("\t[%d]\n", ft_printf("a%sa", NULL));
-    printf("\t[%d]\n",    printf("a%sa", NULL));
-	return (0);
+	unsigned int	size;
+
+	size = 0;
+	while (nbr >= 10)
+	{
+		nbr /= 10;
+		++size;
+	}
+	return (size + 1);
 }
