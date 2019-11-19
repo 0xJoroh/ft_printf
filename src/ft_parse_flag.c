@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_opt.c                                       :+:      :+:    :+:   */
+/*   ft_parse_flag.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 02:07:31 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/19 18:23:18 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/11/19 17:54:11 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/19 22:08:58 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../ft_printf.h"
 
-char	ft_get_opt(const char *format, char conv)
+char	*ft_parse_flag(t_flag *flag, va_list list)
 {
-	while (*format != conv && *format != '.')
-	{
-		if (*format == '-')
-			return ('-');
-		if (*format == '0')
-			return ('0');
-		format++;
-	}
-	return ('n');
+	ft_putchar(flag->opt);
+	ft_putnbr(flag->width);
+	ft_putnbr(flag->prec);
+	ft_putchar(flag->conv);
+	(void)list;
+	return ("\n");
 }

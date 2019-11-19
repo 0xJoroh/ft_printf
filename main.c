@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 18:03:44 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/19 15:43:52 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/19 22:08:35 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		main(void)
 {
-	ft_printf("%6d dfgdgf ", 696);
-	// printf("%6u", 20);
+	ft_printf("hello %s", "cimo");
+	// printf("%06d", 6);
 	return (0);
 }
