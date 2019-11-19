@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_set_flag.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 19:51:58 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/19 02:45:42 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/11/19 01:05:37 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/19 02:44:53 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-// char			*ft_parse_flag(t_flag *flag)
-// {
-// 	char	*output;
-
-// 	output = "...";
-// 	(t_flag)*flag;
-// 	return (output);
-// }
-
-int				ft_printf(const char *format, ...)
+void	ft_set_flag(const char *format, t_flag *flag)
 {
-	va_list	list;
-	int		counter;
+	char	conv;
 
-	va_start(list, format);
-	counter = ft_get_output(&format, list);
-	va_end(list);
-	return (counter);
+	flag->string = ft_get_string(&format, &conv);
+	// flag->opt = ft_get_opt(&flag);
+	// flag->width = ft_get_width(&flag);
+	// flag->prec = ft_get_prec(&flag);
+	flag->conv = conv;
 }

@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 18:03:44 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/18 20:50:58 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/19 01:44:27 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int		main(void)
 {
-    printf("\t[%d]\n", ft_printf("a%sa", NULL));
-    printf("\t[%d]\n",    printf("a%sa", NULL));
+	printf("");
 	return (0);
 }

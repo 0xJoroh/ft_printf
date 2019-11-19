@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_unsigned.c                                 :+:      :+:    :+:   */
+/*   ft_itoa_u.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,6 +11,19 @@
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
+
+static size_t	ft_numlen(size_t nbr)
+{
+	unsigned int	size;
+
+	size = 0;
+	while (nbr >= 10)
+	{
+		nbr /= 10;
+		++size;
+	}
+	return (size + 1);
+}
 
 char				*ft_itoa_u(unsigned int n)
 {
