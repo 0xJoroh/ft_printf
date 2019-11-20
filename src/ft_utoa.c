@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_opt.c                                       :+:      :+:    :+:   */
+/*   ft_utoa.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 02:07:31 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/19 18:23:18 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/11/18 11:47:37 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/18 18:42:50 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-char	ft_get_opt(const char *format, char conv)
+char				*ft_utoa(unsigned int n)
 {
-	while (*format != conv && *format != '.')
+	char			*str;
+	unsigned int	nbr;
+	unsigned int	i;
+	unsigned int	size;
+
+	nbr = n;
+	size = ft_numlen(nbr);
+	i = 0;
+	if (!(str = (char*)malloc(size + 1)))
+		return (0);
+	while (nbr >= 10)
 	{
-		if (*format == '-')
-			return ('-');
-		if (*format == '0')
-			return ('0');
-		format++;
+		str[i++] = (char)(nbr % 10 + 48);
+		nbr /= 10;
 	}
-	return ('n');
+	str[i++] = (char)(nbr % 10 + 48);
+	str[i] = '\0';
+	return (ft_strrev(str));
 }

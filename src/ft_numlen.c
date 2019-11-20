@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_width.c                                     :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 02:11:15 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/19 15:22:52 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/11/20 03:14:03 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/20 03:14:24 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int		ft_get_width(const char *format, va_list list)
+size_t	ft_numlen(size_t nbr)
 {
-	if (*++format == '*')
-		return (va_arg(list, int));
-	return (ft_atoi(format));
+	unsigned int	size;
+
+	size = 0;
+	while (nbr >= 10)
+	{
+		nbr /= 10;
+		++size;
+	}
+	return (size + 1);
 }
