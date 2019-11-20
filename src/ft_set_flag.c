@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 01:05:37 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/20 17:43:37 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/20 22:27:36 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,26 @@ static int		ft_get_prec(const char *format, char conv, va_list list)
 	return (((i = ft_atoi(format)) > 0) ? i : 0);
 }
 
+char			*ft_get_content(va_list list, char conv)
+{
+	if (conv == 'd' || conv == 'i')
+		return (ft_itoa(va_arg(list, int)));
+	if (conv == 'x')
+		return (ft_strlower(ft_dtoh(va_arg(list, int))));
+	if (conv == 'X')
+		return (ft_dtoh(va_arg(list, int)));
+	if (conv == 'u')
+		return (ft_utoa(va_arg(list, unsigned int)));
+	if (conv == 'c')
+		return (ft_atoc(va_arg(list, int)));
+	if (conv == 's')
+		return (va_arg(list, char*));
+	if (conv == 'p')
+		return (ft_get_add(va_arg(list, int*)));
+	else
+		return ("(null)");
+}
+
 void			ft_set_flag(const char *format, t_flag *flag, va_list list)
 {
 	flag->conv = ft_get_conv(format);
@@ -93,5 +113,5 @@ void			ft_set_flag(const char *format, t_flag *flag, va_list list)
 		flag->opt = '-';
 	}
 	flag->prec = ft_get_prec(format, flag->conv, list);
-	flag->content = (flag->conv == '%' ? NULL : va_arg(list, void*));
+	flag->content = (flag->conv == '%' ? NULL : ft_get_content(list, flag->conv));
 }

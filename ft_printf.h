@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 22:29:40 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/20 16:46:17 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/20 22:45:22 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char			*ft_dtoh(unsigned int nbr);
 char			*ft_get_add(void *add);
 char			*ft_utoa(unsigned int n);
 void			ft_set_flag(const char *format, t_flag *flag, va_list list);
-char			*ft_parse_flag(t_flag *flag);
+void			ft_parse_flag(t_flag *flag);
 int				ft_get_output(const char *format, va_list list);
 int				ft_isconv(char c);
 char			*ft_strlower(const char *str);
