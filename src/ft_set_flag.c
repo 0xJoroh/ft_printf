@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 01:05:37 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/20 22:27:36 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/21 23:45:15 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ static int		ft_get_width(const char *format, va_list list, char opt)
 				return (-output);
 			return (output);
 		}
+		if (ft_isdigit(*format) && *format != '0')
+			return (ft_atoi(format));
 		format++;
 	}
 	return (ft_atoi(format));
@@ -82,7 +84,7 @@ static int		ft_get_prec(const char *format, char conv, va_list list)
 	return (((i = ft_atoi(format)) > 0) ? i : 0);
 }
 
-char			*ft_get_content(va_list list, char conv)
+char			*ft_get_cont(va_list list, char conv)
 {
 	if (conv == 'd' || conv == 'i')
 		return (ft_itoa(va_arg(list, int)));
@@ -98,12 +100,13 @@ char			*ft_get_content(va_list list, char conv)
 		return (va_arg(list, char*));
 	if (conv == 'p')
 		return (ft_get_add(va_arg(list, int*)));
-	else
-		return ("(null)");
+	return (NULL);
 }
 
 void			ft_set_flag(const char *format, t_flag *flag, va_list list)
 {
+	char *str;
+
 	flag->conv = ft_get_conv(format);
 	flag->opt = ft_get_opt(format, flag->conv);
 	flag->width = ft_get_width(format, list, flag->opt);
@@ -113,5 +116,9 @@ void			ft_set_flag(const char *format, t_flag *flag, va_list list)
 		flag->opt = '-';
 	}
 	flag->prec = ft_get_prec(format, flag->conv, list);
-	flag->content = (flag->conv == '%' ? NULL : ft_get_content(list, flag->conv));
+	if (!(str = ft_get_cont(list, flag->conv)))
+		flag->content = "(null)";
+	else
+		flag->content = str;
+	flag->content = ((flag->conv == '%') ? "" : flag->content);
 }

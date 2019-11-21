@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 22:29:40 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/20 22:45:22 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/21 23:45:20 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct	s_flag
 	int			width;
 	int			prec;
 	char		conv;
-	void		*content;
+	char		*content;
 }				t_flag;
 
 int				ft_printf(const char *format, ...);
