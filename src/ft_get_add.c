@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 14:05:13 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/20 01:49:55 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/22 11:36:21 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static char		*tohex(unsigned long long nbr)
 		nbr /= 16;
 	}
 	tab[i] = '\0';
-	free(tab);
 	return (ft_strrev(tab));
 }
 
@@ -49,6 +48,5 @@ char			*ft_get_add(void *add)
 	while (i < len)
 		output[i++] = *str++;
 	output[i] = '\0';
-	free(output);
 	return (output);
 }

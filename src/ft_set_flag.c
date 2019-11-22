@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 01:05:37 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/22 10:06:58 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/22 12:21:16 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char		ft_get_conv(const char *format)
 
 static char		ft_get_opt(const char *format, char conv)
 {
-	while (*format != conv && *format != '.')
+	while (*++format != conv && *format != '.')
 	{
 		if (*format == '-')
 			return ('-');
@@ -120,5 +120,5 @@ void			ft_set_flag(const char *format, t_flag *flag, va_list list)
 		flag->content = "(null)";
 	else
 		flag->content = str;
-	flag->content = ((flag->conv == '%') ? "" : flag->content);
+	flag->content = ((flag->conv == '%') ? "%" : flag->content);
 }
