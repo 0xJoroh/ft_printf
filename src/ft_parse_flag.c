@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 17:54:11 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/21 23:58:35 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/22 10:27:34 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char				*ft_set_width(t_flag *flag)
 
 	i = 0;
 	len = flag->width - ft_strlen(flag->content);
-	str = ft_calloc(len, 1);
+	str = malloc(len);
 	c = ((flag->opt == '0') ? '0' : ' ');
 	while (len--)
 		str[i++] = c;
@@ -35,6 +35,7 @@ void				ft_parse_c(t_flag *flag)
 {
 	char	*str;
 
+	str = malloc(flag->width - ft_strlen(flag->content));
 	str = ft_strdup(ft_set_width(flag));
 	if (flag->opt == '-')
 		flag->content = ft_strjoin(flag->content, str);
