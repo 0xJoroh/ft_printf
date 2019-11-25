@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 17:54:11 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/25 12:38:13 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/25 14:16:37 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int				ft_parse_flag(t_flag flag)
 	// 	flag->content = ft_parse_width(flag);
 	// else if (flag->width != 0 && flag->prec != -1)
 	// 	flag->content = ft_mixte(flag);
-	return (ft_strlen(flag.content))
+	return (ft_strlen(flag.content));
 }
