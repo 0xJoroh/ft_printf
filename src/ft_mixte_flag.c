@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_mixte_flag.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 18:03:44 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/25 23:37:11 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/11/25 18:20:08 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/25 18:47:40 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int		main(void)
+char	*ft_mixte(t_flag flag)
 {
-
-	printf("[%d]\n",        ft_printf("%10x",10));
-	printf("[%d]\n",           printf("%10x",10));
-
-	return (0);
+	flag.content = ft_strdup(ft_parse_prec(flag));
+	flag.content = ft_strdup(ft_parse_width(flag));
+	return (flag.content);
 }

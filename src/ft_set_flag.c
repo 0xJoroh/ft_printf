@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_flag.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 01:05:37 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/25 17:48:36 by macbookpro       ###   ########.fr       */
+/*   Updated: 2019/11/25 23:41:06 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static char		ft_get_conv(const char *format)
+static char			ft_get_conv(const char *format)
 {
 	int		i;
 
@@ -34,7 +34,7 @@ static char		ft_get_conv(const char *format)
 	return (0);
 }
 
-static char		ft_get_opt(const char *format, char conv)
+static char			ft_get_opt(const char *format, char conv)
 {
 	format++;
 	while (*format != conv && *format != '.')
@@ -43,12 +43,14 @@ static char		ft_get_opt(const char *format, char conv)
 			return ('-');
 		else if (*format == '0')
 			return ('0');
+		if (ft_isdigit(*format) && *format != '0')
+			return ('n');
 		format++;
 	}
 	return ('n');
 }
 
-static int		ft_get_width(const char *format, va_list list, t_flag *flag)
+static int			ft_get_width(const char *format, va_list list, t_flag *flag)
 {
 	int	output;
 
@@ -72,35 +74,22 @@ static int		ft_get_width(const char *format, va_list list, t_flag *flag)
 	return (ft_atoi(format));
 }
 
-// static int		ft_get_prec(const char *format, char conv, va_list list)
-// {
-// 	++format;
-// 	while (*format != conv && *format != '.')
-// 		format++;
-// 	if (*format == conv)
-// 		return (-1);
-// 	if (*format == '.')
-// 		if (*++format == '*')
-// 			return (va_arg(list, int));
-// 	return (ft_atoi(format));
-// }
-
-static char			*ft_get_arg(va_list list, char conv)
+static char			*ft_get_arg(va_list list, t_flag flag)
 {
-	if (conv == 'd' || conv == 'i')
+	if (flag.conv == 'd' || flag.conv == 'i')
 		return (ft_itoa(va_arg(list, int)));
-	if (conv == 'x')
+	if (flag.conv == 'x')
 		return (ft_strlower(ft_dtoh(va_arg(list, int))));
-	if (conv == 'X')
+	if (flag.conv == 'X')
 		return (ft_dtoh(va_arg(list, int)));
-	if (conv == 'u')
+	if (flag.conv == 'u')
 		return (ft_utoa(va_arg(list, unsigned int)));
-	if (conv == 'c')
+	if (flag.conv == 'c')
 		return (ft_atoc(va_arg(list, int)));
-	if (conv == 's')
+	if (flag.conv == 's')
 		return (va_arg(list, char*));
-	if (conv == 'p')
-		return (ft_get_add(va_arg(list, int*)));
+	if (flag.conv == 'p')
+		return (ft_get_add(va_arg(list, int*), flag.prec));
 	return (NULL);
 }
 
@@ -120,7 +109,7 @@ void				ft_set_flag(const char *format, t_flag *flag, va_list list)
 			flag->prec = ft_atoi(format);
 	else
 		flag->prec = ft_atoi(format);
-	flag->content = ft_get_arg(list, flag->conv);
+	flag->content = ft_get_arg(list, *flag);
 	if (!flag->content)
 		flag->content = "(null)";
 	if (flag->conv == '%')

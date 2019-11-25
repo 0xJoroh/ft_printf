@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse_prec.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/25 18:05:33 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/25 21:48:51 by mait-si-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_printf.h"
 
 static	char	*ft_get_num_content(t_flag flag)
@@ -5,7 +17,7 @@ static	char	*ft_get_num_content(t_flag flag)
 	int		len;
 	int		i;
 	char	*str;
-	
+
 	if (flag.prec == 0 && !ft_strcmp(flag.content, "0"))
 		return ("");
 	if (flag.prec >= (int)ft_strlen(flag.content))
@@ -13,9 +25,10 @@ static	char	*ft_get_num_content(t_flag flag)
 		i = 0;
 		len = flag.prec - ft_strlen(flag.content);
 		str = malloc(len);
-		if (ft_atoi(flag.content) < 0)
+		if (flag.content[0] == '-')
 		{
-			flag.content = ft_memmove(flag.content, flag.content + 1, ft_strlen(flag.content));
+			flag.content = ft_memmove(flag.content, flag.content + 1,
+			ft_strlen(flag.content));
 			str[i++] = '-';
 			len++;
 		}
@@ -29,14 +42,17 @@ static	char	*ft_get_num_content(t_flag flag)
 
 char			*ft_parse_prec(t_flag flag)
 {
-	if (flag.conv == 's')
+	if (flag.conv == 's' || flag.conv == 'c')
 	{
-		if (flag.prec == 0)
+		if (flag.prec == -1 && flag.conv == 'c')
+			return (ft_calloc(1, 1));
+		if (flag.prec == 0 && flag.conv == 's')
 			return (ft_calloc(1, 1));
 		if (flag.prec < (int)ft_strlen(flag.content) && flag.prec > 0)
 			return (ft_substr(flag.content, 0, flag.prec));
 	}
-	if (flag.conv == 'd' || flag.conv == 'i' || flag.conv == 'u' || flag.conv == 'x' || flag.conv == 'X')
+	if (flag.conv == 'd' || flag.conv == 'i' || flag.conv == 'u' ||
+	flag.conv == 'x' || flag.conv == 'X')
 		return (ft_get_num_content(flag));
 	return (flag.content);
 }

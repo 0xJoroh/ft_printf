@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 14:05:13 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/24 10:42:37 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/25 18:13:05 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,15 @@ static char		*tohex(unsigned long long nbr)
 	return (ft_strrev(tab));
 }
 
-char			*ft_get_add(void *add)
+char			*ft_get_add(void *add, int prec)
 {
 	char		*output;
 	char		*str;
 	int			len;
 	int			i;
 
+	if ((unsigned long long)add == 0 && prec == 0)
+		return ("0x");
 	i = 2;
 	str = tohex((unsigned long long)add);
 	len = ft_strlen(str) + 3;

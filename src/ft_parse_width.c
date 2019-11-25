@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse_width.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/25 21:37:32 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/25 23:38:27 by mait-si-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_printf.h"
 
 static char			*ft_set_width(t_flag flag)
@@ -8,11 +20,11 @@ static char			*ft_set_width(t_flag flag)
 	char	c;
 
 	i = 0;
-	len = flag.width - ft_strlen(flag.content);
+	len = flag.width - ft_strlen(flag.content) + 1;
 	if (len > 0)
 	{
 		str = malloc(len);
-		if (flag.opt == '0')
+		if (flag.opt == '0' && flag.prec <= -1)
 			if (flag.conv == '%' || flag.conv == 'd' || flag.conv == 'i' ||
 			flag.conv == 'u' || flag.conv == 'x' || flag.conv == 'X')
 				c = '0';
@@ -26,7 +38,7 @@ static char			*ft_set_width(t_flag flag)
 			ft_strlen(flag.content));
 			str[i++] = '-';
 		}
-		while (len--)
+		while (--len)
 			str[i++] = c;
 		str[i] = '\0';
 	}
@@ -47,5 +59,5 @@ char				*ft_parse_width(t_flag flag)
 		flag.content = ft_strjoin(flag.content, str);
 	else
 		flag.content = ft_strjoin(str, flag.content);
-	return(flag.content);
+	return (flag.content);
 }
