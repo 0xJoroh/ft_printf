@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 02:22:26 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/24 14:28:34 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/25 12:34:41 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,12 @@ int				ft_get_output(const char *format, va_list list)
 		if (*format == '%')
 			if (*(format + 1) == '%')
 				counter += ft_putchar(*format++);
-			// else if (*(format + 1) == '\0')
-			// 	break ;
 			else
 			{
 				ft_init_flag(&flag);
 				ft_set_flag(format++, &flag, list);
 				// ft_put_struct(flag);
-				ft_parse_flag(&flag);
-				counter += ft_strlen(flag.content);
+				counter += ft_parse_flag(&flag);
 				while (*format != flag.conv)
 					format++;
 			}
