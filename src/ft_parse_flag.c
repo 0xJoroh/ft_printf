@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 17:54:11 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/25 14:16:37 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/25 14:26:40 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void				ft_simple_conv(t_flag flag)
 int				ft_parse_flag(t_flag flag)
 {
 	if (flag.width == 0 && flag.prec == -1)
-		ft_simple_conv(&flag);
+		ft_simple_conv(flag);
 	// else if (flag->width == 0 && flag->prec != -1)
 	// 	flag->content = ft_parse_prec(flag);
 	// else if (flag->width != 0 && flag->prec == -1)
