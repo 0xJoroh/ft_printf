@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ../ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/18 22:29:40 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/26 15:47:45 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/11/26 16:25:34 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/26 16:26:16 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ char			*ft_atoc(int nbr);
 size_t			ft_numlen(size_t nbr);
 char			*ft_parse_prec(t_flag flag);
 char			*ft_parse_width(t_flag flag);
-char			*ft_mixte(t_flag flag);
 
 int				ft_atoi(const char *str);
 void			ft_bzero(void *s, size_t n);
@@ -52,7 +51,8 @@ char			*ft_strdup(const char *s1);
 size_t			ft_strlen(const char *s);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
-char			*ft_strnstr(const char *haystack, const char *needle, size_t len);\
+char			*ft_strnstr(const char *haystack, const char *needle,
+				size_t len);
 int				ft_strcmp(const char *s1, const char *s2);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
