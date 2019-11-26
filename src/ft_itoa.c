@@ -1,32 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 18:00:47 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/10/22 10:57:40 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/26 15:50:48 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+static unsigned int	len(unsigned int nbr)
 {
-	char	*ss;
-	int		i;
+	unsigned int	size;
 
-	if (!s)
-		return (0);
-	i = 0;
-	if (!(ss = (char *)malloc(ft_strlen(s) * sizeof(char) + 1)))
-		return (0);
-	while (s[i] != '\0')
+	size = 0;
+	while (nbr >= 10)
 	{
-		ss[i] = f(i, s[i]);
-		i++;
+		nbr /= 10;
+		++size;
 	}
-	ss[i] = '\0';
-	return (ss);
+	return (size + 1);
+}
+
+char				*ft_itoa(int n)
+{
+	char			*str;
+	unsigned int	nbr;
+	unsigned int	i;
+	unsigned int	size;
+
+	nbr = ((n < 0) ? (unsigned int)(n * -1) : (unsigned int)n);
+	size = len(nbr);
+	i = 0;
+	if (!(str = (char*)malloc(size + 1 + (n < 0 ? 1 : 0))))
+		return (0);
+	if (n < 0 && (str[i] = '-'))
+		size++;
+	i = size - 1;
+	while (nbr >= 10)
+	{
+		str[i--] = (char)(nbr % 10 + 48);
+		nbr /= 10;
+	}
+	str[i] = (char)(nbr % 10 + 48);
+	str[size] = '\0';
+	return (str);
 }

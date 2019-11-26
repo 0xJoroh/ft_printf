@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 17:09:24 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/18 18:37:14 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/10/25 02:39:21 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/26 15:50:48 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int		ft_putstr(char *str)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int len;
+	unsigned char			*d;
+	const unsigned char		*s;
 
-	len = ft_strlen(str);
-	if (str)
-		while (*str != '\0')
-			write(1, &*str++, 1);
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	if (len == 0)
+		return (dst);
+	if (d < s)
+	{
+		while (len--)
+			*d++ = *s++;
+	}
 	else
 	{
-		write(1, "(null)", 6);
-		len = 6;
+		d += len - 1;
+		s += len - 1;
+		while (len--)
+			*d-- = *s--;
 	}
-	return (len);
+	return (dst);
 }

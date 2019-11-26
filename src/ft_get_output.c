@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 02:22:26 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/25 23:41:23 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/26 15:51:05 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,6 @@ static void		ft_init_flag(t_flag *flag)
 	flag->prec = -1;
 	flag->conv = 0;
 	flag->content = 0;
-}
-
-void			ft_put_struct(t_flag flag)
-{
-	ft_putstr("\n\n");
-	ft_putstr("\t\t\t\t\t\t\twidth\t\t:\t");
-	ft_putnbr(flag.width);
-	ft_putstr("\n\t\t\t\t\t\t\toption\t\t:\t");
-	ft_putchar(flag.opt);
-	ft_putstr("\n\t\t\t\t\t\t\tprecesion\t:\t");
-	ft_putnbr(flag.prec);
-	ft_putstr("\n\t\t\t\t\t\t\tconversion\t:\t");
-	ft_putchar(flag.conv);
-	ft_putstr("\n\t\t\t\t\t\t\tcontent\t\t:\t");
-	ft_putstr(flag.content);
-	ft_putstr("\n\n");
 }
 
 int				ft_get_output(const char *format, va_list list)
@@ -52,7 +36,6 @@ int				ft_get_output(const char *format, va_list list)
 			{
 				ft_init_flag(&flag);
 				ft_set_flag(format++, &flag, list);
-				// ft_put_struct(flag);
 				counter += ft_parse_flag(flag);
 				while (*format != flag.conv)
 					format++;

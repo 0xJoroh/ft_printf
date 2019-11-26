@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 17:54:11 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/25 21:47:35 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/26 15:51:05 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 int				ft_parse_flag(t_flag flag)
 {
-	if (flag.width == 0 && flag.conv == 'c' && flag.prec == -1)
+	int		len;
+
+	len = 0;
+	if (flag.content[0] == 0 && flag.conv == 'c')
+		len++;
+	if (flag.width <= 1 && flag.conv == 'c')
 		return (ft_putchar(flag.content[0]));
 	else if (flag.width == 0 && flag.prec != -1)
 		flag.content = ft_parse_prec(flag);
@@ -22,6 +27,10 @@ int				ft_parse_flag(t_flag flag)
 	flag.width > (int)ft_strlen(flag.content))
 		flag.content = ft_parse_width(flag);
 	else if (flag.width != 0 && flag.prec != -1)
-		flag.content = ft_mixte(flag);
-	return (ft_putstr(flag.content));
+	{
+		flag.content = ft_strdup(ft_parse_prec(flag));
+		flag.content = ft_strdup(ft_parse_width(flag));
+	}
+	len += ft_putstr(flag.content);
+	return (len);
 }

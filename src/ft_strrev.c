@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/25 02:38:00 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/10/25 02:38:01 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/10/18 17:45:16 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/26 15:50:48 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int		ft_tolower(int c)
+char	*ft_strrev(char *str)
 {
-	if (c >= 65 && c <= 90)
-		return (c + 32);
-	return (c);
+	int		i;
+	int		size;
+	char	helper;
+
+	i = -1;
+	size = ft_strlen(str) - 1;
+	while (++i <= (size / 2))
+	{
+		helper = str[i];
+		str[i] = str[size - i];
+		str[size - i] = helper;
+	}
+	return (str);
 }

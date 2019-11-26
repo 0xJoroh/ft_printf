@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ../ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 22:29:40 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/25 21:38:59 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/26 15:47:45 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# ifndef _LIBFT_H_
-#  define _LIBFT_H_
-#  include "src/libft/libft.h"
-# else
-#  include <stdlib.h>
-#  include <unistd.h>
-# endif
-
+# include <stdlib.h>
+# include <unistd.h>
 # include <stdarg.h>
-# include <stdio.h>
 
 typedef struct	s_flag
 {
@@ -47,5 +40,25 @@ size_t			ft_numlen(size_t nbr);
 char			*ft_parse_prec(t_flag flag);
 char			*ft_parse_width(t_flag flag);
 char			*ft_mixte(t_flag flag);
+
+int				ft_atoi(const char *str);
+void			ft_bzero(void *s, size_t n);
+void			*ft_calloc(size_t count, size_t size);
+int				ft_isalpha(int c);
+int				ft_isascii(int c);
+int				ft_isdigit(int c);
+void			*ft_memmove(void *dst, const void *src, size_t len);
+char			*ft_strdup(const char *s1);
+size_t			ft_strlen(const char *s);
+int				ft_tolower(int c);
+int				ft_toupper(int c);
+char			*ft_strnstr(const char *haystack, const char *needle, size_t len);\
+int				ft_strcmp(const char *s1, const char *s2);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_itoa(int n);
+int				ft_putstr(char *str);
+char			*ft_strrev(char *str);
+int				ft_putchar(unsigned char c);
 
 #endif

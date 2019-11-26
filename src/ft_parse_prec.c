@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 18:05:33 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/25 21:48:51 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/26 15:51:05 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	char	*ft_get_num_content(t_flag flag)
 	{
 		i = 0;
 		len = flag.prec - ft_strlen(flag.content);
-		str = malloc(len);
+		str = ft_calloc(len, 1);
 		if (flag.content[0] == '-')
 		{
 			flag.content = ft_memmove(flag.content, flag.content + 1,

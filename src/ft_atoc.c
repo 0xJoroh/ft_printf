@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 02:31:54 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/22 11:35:53 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/26 15:51:05 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_atoc(int nbr)
 
 	if (!nbr)
 		return ("");
-	str = malloc(2);
+	str = ft_calloc(2, 1);
 	str[0] = nbr;
 	if (!ft_isascii(nbr))
 		return ("\0");

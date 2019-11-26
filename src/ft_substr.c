@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_words_tables.c                            :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 17:07:04 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/10/18 17:44:32 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/10/16 16:24:46 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/26 15:50:48 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-void	ft_print_words_tables(char **tab)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	while (*tab != '\0')
+	char	*str;
+	int		i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	if (ft_strlen(s) < start || !s[0])
 	{
-		ft_putstr(*tab++);
-		ft_putstr("\n");
+		if (!(str = (char *)malloc(1)))
+			return (0);
+		*str = '\0';
+		return (str);
 	}
+	s += start;
+	if (!(str = (char *)malloc(len * sizeof(char) + 1)))
+		return (0);
+	while (*s && len--)
+		str[i++] = *s++;
+	str[i] = '\0';
+	return (str);
 }

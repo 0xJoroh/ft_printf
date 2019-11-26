@@ -6,7 +6,7 @@
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 14:05:13 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/25 18:13:05 by mait-si-         ###   ########.fr       */
+/*   Updated: 2019/11/26 15:51:05 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char		*tohex(unsigned long long nbr)
 	int								i;
 
 	i = 0;
-	tab = malloc(100);
+	tab = ft_calloc(100, 1);
 	if (nbr == 0)
 		tab[i++] = '0';
 	while (nbr)
@@ -44,7 +44,7 @@ char			*ft_get_add(void *add, int prec)
 	i = 2;
 	str = tohex((unsigned long long)add);
 	len = ft_strlen(str) + 3;
-	output = malloc(len);
+	output = ft_calloc(len, 1);
 	output[0] = '0';
 	output[1] = 'x';
 	while (i < len)
