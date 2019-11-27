@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_dtoh.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 19:51:58 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/26 18:21:18 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/11/22 14:19:29 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/27 11:44:37 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int				ft_printf(const char *format, ...)
+char	*ft_dtoh(unsigned int nbr)
 {
-	va_list	list;
-	int		counter;
+	unsigned int	rem;
+	char			*tab;
+	int				i;
 
-	va_start(list, format);
-	counter = ft_get_output(format, list);
-	va_end(list);
-	return (counter);
+	i = 0;
+	tab = (char*)ft_calloc(50, 1);
+	if (nbr == 0)
+		tab[i++] = '0';
+	while (nbr)
+	{
+		rem = nbr % 16;
+		tab[i++] = ((rem < 10) ? rem + 48 : rem + 55);
+		nbr /= 16;
+	}
+	tab[i] = '\0';
+	return (ft_strrev(tab));
 }

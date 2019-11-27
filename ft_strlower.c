@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlower.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 19:51:58 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/26 18:21:18 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/11/20 02:10:19 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/27 11:44:37 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int				ft_printf(const char *format, ...)
+char	*ft_strlower(const char *str)
 {
-	va_list	list;
-	int		counter;
+	int		len;
+	char	*str2;
+	int		i;
 
-	va_start(list, format);
-	counter = ft_get_output(format, list);
-	va_end(list);
-	return (counter);
+	i = 0;
+	len = ft_strlen(str) + 1;
+	str2 = ft_calloc(len, 1);
+	while (str[i])
+	{
+		str2[i] = ft_tolower(str[i]);
+		i++;
+	}
+	str2[i] = '\0';
+	return (str2);
 }

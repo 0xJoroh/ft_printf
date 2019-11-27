@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 19:51:58 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/26 18:21:18 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/10/25 02:39:01 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/27 11:44:37 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int				ft_printf(const char *format, ...)
+char	*ft_strdup(const char *s1)
 {
-	va_list	list;
-	int		counter;
+	char	*s;
+	int		len;
+	int		i;
 
-	va_start(list, format);
-	counter = ft_get_output(format, list);
-	va_end(list);
-	return (counter);
+	len = 0;
+	if (!s1)
+		return (NULL);
+	while (s1[len])
+		len++;
+	len++;
+	s = ft_calloc(len, 1);
+	if (s == 0)
+		return (0);
+	i = -1;
+	while (s1[++i])
+		s[i] = s1[i];
+	s[i] = '\0';
+	return (s);
 }

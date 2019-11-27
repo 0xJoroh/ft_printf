@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 19:51:58 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/26 18:21:18 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/10/18 17:09:24 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/11/27 11:44:37 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int				ft_printf(const char *format, ...)
+int		ft_putstr(char *str)
 {
-	va_list	list;
-	int		counter;
+	int len;
 
-	va_start(list, format);
-	counter = ft_get_output(format, list);
-	va_end(list);
-	return (counter);
+	len = ft_strlen(str);
+	if (str)
+		while (*str != '\0')
+			write(1, &*str++, 1);
+	else
+	{
+		write(1, "(null)", 6);
+		len = 6;
+	}
+	return (len);
 }

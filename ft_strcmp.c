@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-si- <mait-si-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 19:51:58 by mait-si-          #+#    #+#             */
-/*   Updated: 2019/11/26 18:21:18 by mait-si-         ###   ########.fr       */
+/*   Created: 2019/09/02 16:24:53 by mait-si-          #+#    #+#             */
+/*   Updated: 2019/10/16 18:59:10 by mait-si-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int				ft_printf(const char *format, ...)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	va_list	list;
-	int		counter;
-
-	va_start(list, format);
-	counter = ft_get_output(format, list);
-	va_end(list);
-	return (counter);
+	while (*s1 || *s2)
+		if (*s1++ != *s2++)
+			return (*(unsigned char*)(s1 - 1) - *(unsigned char*)(s2 - 1));
+	return (0);
 }
